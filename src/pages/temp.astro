@@ -1,0 +1,83 @@
+<style>
+  * {
+    list-style-type: none;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  .outermost {
+    position: relative;
+  }
+
+  #ham-btn {
+    z-index: 20;
+    padding: 10px;
+    background-color: cornflowerblue;
+    border-radius: 15%;
+  }
+
+  .menu-container {
+    background-color: yellow;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 2rem;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    /* right: -60vw; */
+    /* transform: translateX(50vw); */
+  }
+
+  #show-menu:not(:checked) + .menu-container {
+    right: -100vw;
+    transition: 2s ease-in-out;
+  }
+
+  #show-menu:checked + .menu-container {
+    right: 0;
+    transition: 2s ease-in-out;
+  }
+</style>
+
+<div class="outermost">
+  <button id="ham-btn">Ham</button>
+  <input type="checkbox" id="show-menu" hidden />
+  <div class="menu-container">
+    <ul>
+      <li>About</li>
+      <li>Projects</li>
+      <li>Contact</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  const hamBtn = document.getElementById("ham-btn")! as HTMLInputElement;
+  const shouldShowMenu = document.getElementById(
+    "show-menu"
+  )! as HTMLInputElement;
+
+  hamBtn.addEventListener("click", () => {
+    shouldShowMenu.checked = !shouldShowMenu.checked;
+    // Have to manually dispatch the change event
+    const valueChangedEvent = new Event("change", {
+      bubbles: true,
+      cancelable: true,
+    });
+    shouldShowMenu.dispatchEvent(valueChangedEvent);
+  });
+
+  const handleMenuChange = (e: Event) => {
+    const checkbox = e.currentTarget as HTMLInputElement;
+    if (checkbox.checked) {
+      console.log("Show");
+    } else {
+      console.log("Hide");
+    }
+  };
+
+  shouldShowMenu.addEventListener("change", handleMenuChange);
+</script>

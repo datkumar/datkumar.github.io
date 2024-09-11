@@ -1,0 +1,32 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import "../styles/global.css";
+import Header from "./Header.astro";
+
+interface Props {
+  pageTitle?: string;
+}
+
+const { pageTitle } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle ?? "Kumar Deshmukh"}</title>
+    <ViewTransitions />
+  </head>
+  <body class="max-w-5xl mx-auto">
+    <Header />
+    <main>
+      <div class="p-5">
+        <slot />
+      </div>
+    </main>
+  </body>
+</html>

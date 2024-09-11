@@ -1,0 +1,105 @@
+---
+const navList = [
+  { title: "About", href: "/about" },
+  { title: "Projects", href: "/projects" },
+  { title: "Contact", href: "/contact" },
+];
+---
+
+<style>
+  #ham-toggle:not(:checked) + #nav-menu {
+    transform: translateX(100vw);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  #ham-toggle:checked + #nav-menu {
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+  }
+</style>
+
+<header transition:persist transition:animate="none">
+  <div class="relative md:static md:flex md:justify-between">
+    <!-- Logo -->
+    <h1 class="text-4xl font-mono font-bold text-indigo-700 p-5">
+      <a href="/"> kumar~ </a>
+    </h1>
+
+    <nav role="navigation">
+      <span hidden>Navigation</span>
+
+      <!-- Desktop: NavLinks -->
+      <ul class="hidden md:flex gap-3 justify-evenly p-5">
+        {
+          navList.map((item) => (
+            <li class="px-5 text-pink-600 text-2xl font-bold hover:underline">
+              <a href={item.href}>{item.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Mobile: Hamburger Menu and NavLinks  -->
+      <div class="md:hidden">
+        <button
+          title="Show Navigation Menu"
+          id="ham-btn"
+          role="dialog"
+          class="absolute top-5 right-5"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="40px"
+            width="40px"
+            viewBox="0 -960 960 960"
+            class="fill-pink-600"
+          >
+            <path
+              d="M160-240q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h640q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240H160Zm0-200q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h640q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H160Zm0-200q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h640q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H160Z"
+            ></path>
+          </svg>
+        </button>
+        <input type="checkbox" name="ham-toggle" id="ham-toggle" hidden />
+        <ul
+          id="nav-menu"
+          class="fixed top-15 right-0 translate-x-[100vw] pt-10 h-dvh w-dvw flex flex-col gap-4 items-center justify-start bg-indigo-600"
+        >
+          {
+            navList.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="text-white text-2xl font-bold hover:underline"
+                >
+                  {item.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const hamBtn = document.getElementById("ham-btn")! as HTMLInputElement;
+  const hamCheckbox = document.getElementById(
+    "ham-toggle"
+  )! as HTMLInputElement;
+
+  hamBtn.addEventListener("click", () => {
+    hamCheckbox.checked = !hamCheckbox.checked;
+    // Have to manually dispatch a new change event on checkbox for updating it
+    // hamCheckbox.dispatchEvent(new Event("change"));
+  });
+
+  // Whenever any navbar link is clicked, reset the checkbox to false
+  const allNavbarLinks = document.querySelectorAll("header a");
+  allNavbarLinks.forEach((link) =>
+    link.addEventListener("click", () => {
+      hamCheckbox.checked = false;
+      // hamCheckbox.dispatchEvent(new Event("change"));
+    })
+  );
+</script>
