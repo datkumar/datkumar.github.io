@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "../../layouts/PageLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+
+const projectEntries = await getCollection("projects");
+---
+
+<PageLayout pageTitle="Projects">
+  <ul class="list-none grid grid-cols-1 md:grid-cols-2 gap-5">
+    {
+      projectEntries.map((entry) => {
+        return (
+          <li>
+            <a href={`/projects/${entry.slug}`}>
+              <ProjectCard projectData={entry.data} />
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</PageLayout>

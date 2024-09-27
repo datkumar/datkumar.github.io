@@ -1,0 +1,45 @@
+---
+interface Props {
+  headingLeft: string;
+  headingRight?: string;
+  subheadingLeft: string;
+  subheadingRight?: string;
+  bulletPoints: string[];
+}
+
+const {
+  headingLeft,
+  subheadingLeft,
+  headingRight,
+  subheadingRight,
+  bulletPoints,
+} = Astro.props;
+---
+
+<div class="font-sans">
+  <div class="px-3">
+    <div class="flex justify-between md:text-lg">
+      <div class="font-extrabold">{headingLeft}</div>
+      <div>{headingRight}</div>
+    </div>
+    <div class="flex justify-between">
+      <div class="font-semibold">{subheadingLeft}</div>
+      <div>{subheadingRight}</div>
+    </div>
+  </div>
+  <div class="pl-3">
+    {
+      bulletPoints && (
+        <ul class={bulletPoints.length > 1 ? "list-disc px-2" : ""}>
+          {bulletPoints.map((point) => (
+            <li>
+              <p class="font-light text-xs md:text-sm text-justify">
+                <span set:html={point} />
+              </p>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</div>

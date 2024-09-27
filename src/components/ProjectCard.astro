@@ -1,6 +1,42 @@
 ---
+import type { ProjectData } from "../content/config";
+import { technologies } from "../utils/data";
+
 interface Props {
-  projectTitle: string;
+  projectData: ProjectData;
 }
-const { projectTitle } = Astro.props;
+
+const { projectData } = Astro.props;
 ---
+
+<div
+  class="py-4 px-5 border-2 bg-slate-50 rounded-xl shadow-lg hover:border-teal-400"
+>
+  <div class="flex justify-between items-center">
+    <!-- Project name -->
+    <h2 class="text-xl font-bold py-2">
+      {projectData.title}
+    </h2>
+    <!-- Tech Stack -->
+    <ul class="flex gap-2 py-2">
+      {
+        projectData.tech_stack.map((item) => (
+          <li>
+            <img
+              class="h-5 max-w-6"
+              src={`/tech/${technologies[item].logo}`}
+              alt={`${technologies[item].title} logo`}
+              title={technologies[item].title}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <!-- Description -->
+  <div
+    class="pt-1 pb-2 font-thin text-slate-700 text-sm md:text-base leading-tight"
+  >
+    {projectData.description}
+  </div>
+</div>

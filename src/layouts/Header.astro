@@ -2,7 +2,7 @@
 const navList = [
   { title: "About", href: "/about" },
   { title: "Projects", href: "/projects" },
-  { title: "Contact", href: "/contact" },
+  { title: "Blog", href: "/blog" },
 ];
 ---
 
@@ -16,13 +16,21 @@ const navList = [
     transform: translateX(0);
     transition: transform 0.3s ease-in-out;
   }
+
+  .shine:hover {
+    text-shadow: 0 0 30px #7308ff9f;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    -webkit-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+  }
 </style>
 
 <header transition:persist transition:animate="none">
-  <div class="relative md:static md:flex md:justify-between">
+  <div class="font-mono relative md:static md:flex md:justify-between md:pt-5">
     <!-- Logo -->
-    <h1 class="text-4xl font-mono font-bold text-indigo-700 p-5">
-      <a href="/"> kumar~ </a>
+    <h1 class="text-4xl font-mono font-bold text-indigo-700 p-5 shine">
+      <a href="/">kumar~</a>
     </h1>
 
     <nav role="navigation">
@@ -66,11 +74,8 @@ const navList = [
         >
           {
             navList.map((item) => (
-              <li>
-                <a
-                  href={item.href}
-                  class="text-white text-2xl font-bold hover:underline"
-                >
+              <li class="py-2 text-white text-3xl font-bold">
+                <a href={item.href} class=" hover:underline">
                   {item.title}
                 </a>
               </li>

@@ -1,7 +1,74 @@
 ---
+import SectionEntry from "../components/SectionEntry.astro";
+import SectionTitle from "../components/SectionTitle.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 ---
 
 <PageLayout pageTitle="About">
-  <h1>About Me info</h1>
+  <div class="mx-auto max-w-3xl">
+    <SectionTitle title="Education" />
+    <SectionEntry
+      headingLeft="Bachelor of Engineering, IT"
+      headingRight="2019-2023"
+      subheadingLeft="Pune Institute of Computer Technology"
+      subheadingRight="Pune"
+      bulletPoints={["Relevant coursework: DSA, OOP, DBMS, OS"]}
+    />
+    <br />
+    <SectionTitle title="Work Experience" />
+    <SectionEntry
+      headingLeft="Product Engineer"
+      headingRight="Sept 2023 - Jan 2024"
+      subheadingLeft="BeyondWalls"
+      subheadingRight="Pune"
+      bulletPoints={[
+        "Implemented a <span class='font-semibold'>Video-Tour</span> functionality in the app that allowed brokers to showcase property listings visually, thereby increasing reach and driving faster sales",
+        "Developed a functional interactive prototype from scratch, complete with UI elements and intuitive user interactions, to demonstrate the potential of a new external app",
+      ]}
+    />
+    <br />
+    <SectionEntry
+      headingLeft="Product Engineer Intern"
+      headingRight="Feb 2023 - Aug 2023"
+      subheadingLeft="Kylas CRM"
+      subheadingRight="Pune"
+      bulletPoints={[
+        "Successfully completed a two-month training program, acquiring a strong foundation in Flutter and best practices for writing maintainable code.",
+        'Developed features such as "Quick Actions" and "Import Contacts" that significantly <span class=\'font-semibold\'>reduced user clicks</span> and automated manual tasks, improving overall efficiency.',
+      ]}
+    />
+    <br />
+    <SectionEntry
+      headingLeft="Web Developer Intern"
+      headingRight="Sept 2022 - Feb 2023"
+      subheadingLeft="PICT & Huf India"
+      subheadingRight="Remote"
+      bulletPoints={[
+        "Led a team of four developers in the development of an <span class='font-semibold'>Industry 4.0 web-portal</span> using the MERN stack, cloud deployments, and socket-based message passing",
+        "Collaborated with cross-functional teams and the client to successfully implement digital transformation of existing paper-based processes",
+        "Implemented streamlined notification rules and real-time dashboards to enhance efficiency, significantly reducing downtime and accelerating response times.",
+      ]}
+    />
+    <br />
+    <SectionTitle title="Volunteering" />
+    <SectionEntry
+      headingLeft="Mentor"
+      headingRight="Mar 2023 - Apr 2023"
+      subheadingLeft="Dreamcatchers Club"
+      subheadingRight="Pune"
+      bulletPoints={[
+        "Guided high-school students in software development, introducing them to various aspects of the field and facilitating the creation of mini-projects.",
+      ]}
+    />
+    <br />
+    <SectionEntry
+      headingLeft="Problem Curator"
+      headingRight="Nov 2021 - Feb 2022"
+      subheadingLeft="PCSB"
+      subheadingRight="Remote"
+      bulletPoints={[
+        "Created challenging coding problems for college competitions. Monitored and ensured the integrity of coding contests, addressing any discrepancies in problems or test cases.",
+      ]}
+    />
+  </div>
 </PageLayout>

@@ -1,0 +1,23 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import { technologies } from "../utils/data";
+---
+
+<PageLayout>
+  <div
+    class="container mx-auto h-full max-w-5xl flex gap-3 flex-wrap justify-center items-center"
+  >
+    {
+      Object.entries(technologies).map(([_, { title, logo }]) => (
+        <div class="bg-stone-100 shadow-md p-4 rounded-xl">
+          <img
+            class="h-12 max-w-16"
+            src={`/tech/${logo}`}
+            alt={`${title} logo`}
+            title={title}
+          />
+        </div>
+      ))
+    }
+  </div>
+</PageLayout>

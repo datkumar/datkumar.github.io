@@ -7,24 +7,28 @@ interface Props {
   pageTitle?: string;
 }
 
-const { pageTitle } = Astro.props;
+const { pageTitle = "Kumar Deshmukh" } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle ?? "Kumar Deshmukh"}</title>
+    <!-- Page Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Page Description -->
+    <meta name="description" content="Astro description" />
+    <!-- Page Title -->
+    <title>{pageTitle}</title>
+    <!-- For smooth navigation animation -->
     <ViewTransitions />
   </head>
-  <body class="max-w-5xl mx-auto">
+  <body class="mx-auto max-w-5xl">
     <Header />
     <main>
-      <div class="p-5">
+      <div class="container px-6 pt-2 pb-10">
         <slot />
       </div>
     </main>

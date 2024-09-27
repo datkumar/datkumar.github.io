@@ -1,0 +1,27 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+---
+
+<style>
+  a {
+    @apply font-mono font-semibold text-blue-700 hover:text-pink-600;
+  }
+</style>
+
+<PageLayout pageTitle="Blog">
+  <div
+    class="flex flex-col gap-3 h-[300px] items-center justify-center text-center text-xl"
+  >
+    <div>
+      <h1 class="font-bold text-2xl">Coming Soon!!</h1>
+    </div>
+    <div>
+      In the meantime, you can check out my <a
+        target="_blank"
+        href="https://datkumar.github.io/code-journal/">Code-Journal</a
+      > or <a target="_blank" href="https://github.com/datkumar/Configs"
+        >Configs</a
+      >
+    </div>
+  </div>
+</PageLayout>

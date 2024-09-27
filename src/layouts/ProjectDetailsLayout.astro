@@ -1,0 +1,67 @@
+---
+import type { ProjectData } from "../content/config";
+import { technologies } from "../utils/data";
+import MarkdownContentLayout from "./MarkdownContentLayout.astro";
+import PageLayout from "./PageLayout.astro";
+
+interface Props {
+  projectData: ProjectData;
+}
+
+const { projectData } = Astro.props;
+---
+
+<PageLayout pageTitle={projectData.title}>
+  <div class="mx-auto max-w-3xl">
+    <div class="flex gap-5 items-center">
+      <!-- Title -->
+      <h1 class="text-3xl font-extrabold">{projectData.title}</h1>
+      <!-- Code and Demo links -->
+      <div class="space-x-3">
+        <a href={projectData.code_url} target="_blank">
+          <button
+            class="px-3 py-2 rounded-lg shadow-md bg-stone-100 font-mono font-semibold text-indigo-600 hover:text-pink-600"
+            >Code</button
+          >
+        </a>
+        {
+          projectData.demo_url && (
+            <a href={projectData.demo_url} target="_blank">
+              <button class="px-3 py-2 rounded-lg shadow-md  bg-indigo-600 font-mono font-semibold text-white  hover:bg-pink-600 ">
+                Demo
+              </button>
+            </a>
+          )
+        }
+      </div>
+    </div>
+    <!-- Summary quote -->
+    <blockquote
+      class="px-6 py-3 my-5 text-cyan-900 bg-slate-50 border-teal-600 border-l-8 rounded-md"
+    >
+      <p>{projectData.description}</p>
+    </blockquote>
+
+    <!-- Tech stack -->
+    <div class="flex flex-col md:flex-row md:items-center py-3 gap-4">
+      <h2 class="font-extrabold text-2xl">Tech-stack:</h2>
+      <ul class="flex gap-4">
+        {
+          projectData.tech_stack.map((item) => (
+            <li>
+              <img
+                class="h-8 md:h-12 max-w-10 md:max-w-16"
+                src={`/tech/${technologies[item].logo}`}
+                alt={`${technologies[item].title} logo`}
+                title={technologies[item].title}
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <MarkdownContentLayout>
+      <slot />
+    </MarkdownContentLayout>
+  </div>
+</PageLayout>

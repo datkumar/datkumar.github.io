@@ -1,9 +1,98 @@
 ---
+import SocialsButton from "../components/SocialsButton.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 ---
 
 <PageLayout>
-  <main>
-    <h1>Hello I'm <strong>Kumar Deshmukh</strong></h1>
-  </main>
+  <div class="mx-auto max-w-4xl">
+    <!-- Profile Card -->
+    <div
+      class="flex flex-col md:gap-3 md:flex-row items-center md:items-start pt-4 pb-6 px-6 bg-white shadow-lg rounded-lg"
+    >
+      <!-- Profile pic -->
+      <div
+        class="h-32 w-32 md:h-44 md:w-44 rounded-full bg-gradient-to-br from-indigo-600 to-pink-200 border-4 border-white overflow-hidden shrink-0 mb-4 md:mb-0"
+      >
+        <img src="/me.png" alt="My Photo" class="object-cover rounded-full" />
+      </div>
+
+      <!-- Profile para -->
+      <div
+        class="flex flex-col gap-2 justify-center my-auto text-sm md:text-lg text-justify md:text-left"
+      >
+        <p>
+          Hello I'm <strong>Kumar Deshmukh</strong>, a web and mobile developer
+          from <a
+            class="hover:bg-pink-600 hover:text-white px-1"
+            href="https://maps.app.goo.gl/3G6y87Ud6NqGNMrW7"
+            target="_blank">Pune, India</a
+          >
+        </p>
+        <p class="font-light text-slate-600">
+          I enjoy exploring different technologies, working on interesting
+          projects, and building practical solutions. When I'm not coding,
+          you'll find me gaming or watching a cinematic film. Let's build
+          something awesome together!
+        </p>
+      </div>
+    </div>
+
+    <br />
+    <!-- Skills -->
+    <h2 class="pt-2 font-mono font-bold text-2xl">SKILLS:</h2>
+    <table class="font-mono my-3">
+      <thead> </thead>
+      <tbody>
+        <tr>
+          <td
+            class="border-r-2 border-b-2 border-indigo-500 text-right font-semibold px-3"
+            >Frontend
+          </td>
+          <td class="border-l-2 border-b-2 border-indigo-500 text-sm p-2"
+            >React, Next.js, Flutter, Tailwind, Astro, HTML, CSS</td
+          >
+        </tr>
+        <tr class="border-none">
+          <td
+            class="border-r-2 border-b-2 border-indigo-500 text-right font-semibold px-3"
+            >Backend</td
+          >
+          <td class="border-l-2 border-b-2 border-indigo-500 text-sm p-2"
+            >Node.js, Express, Prisma, MongoDB, PostgreSQL, Mongoose</td
+          >
+        </tr>
+        <tr class="border-none">
+          <td class="border-r-2 border-indigo-500 text-right font-semibold px-3"
+            >Misc.</td
+          >
+          <td class="border-l-2 border-indigo-500 text-sm p-2"
+            >TypeScript, JavaScript, C++, Java, Python, Bash, Git</td
+          >
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <!-- Contact -->
+    <h2 class="pt-2 font-mono font-bold text-2xl">Let's connect:</h2>
+    <div class="flex items-center py-2 gap-4">
+      <SocialsButton
+        title="LinkedIn"
+        logo="linkedin.svg"
+        colorClass="text-white bg-blue-500"
+        url="https://www.linkedin.com/in/kumardeshmukh/"
+      />
+      <SocialsButton
+        title="Twitter"
+        logo="twitter.svg"
+        colorClass="text-white bg-black"
+        url="https://x.com/kafkaesql"
+      />
+      <SocialsButton
+        title="GitHub"
+        logo="github.svg"
+        colorClass="bg-slate-100 text-black"
+        url="https://github.com/datkumar"
+      />
+    </div>
+  </div>
 </PageLayout>
