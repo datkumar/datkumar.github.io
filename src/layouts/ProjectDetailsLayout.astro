@@ -12,10 +12,10 @@ const { projectData } = Astro.props;
 ---
 
 <PageLayout pageTitle={projectData.title}>
-  <div class="mx-auto max-w-3xl">
-    <div class="flex gap-5 items-center">
+  <div class="mx-auto">
+    <div class="flex gap-5 items-center justify-between md:justify-start">
       <!-- Title -->
-      <h1 class="text-3xl font-extrabold">{projectData.title}</h1>
+      <h1 class="text-2xl md:text-3xl font-black">{projectData.title}</h1>
       <!-- Code and Demo links -->
       <div class="space-x-3">
         <a href={projectData.code_url} target="_blank">
@@ -37,29 +37,32 @@ const { projectData } = Astro.props;
     </div>
     <!-- Summary quote -->
     <blockquote
-      class="px-6 py-3 my-5 text-cyan-900 bg-slate-50 border-teal-600 border-l-8 rounded-md"
+      class="px-6 py-3 my-5 text-cyan-900 bg-slate-50 border-teal-600 border-l-8 rounded-md text-sm md:text-lg leading-7"
     >
       <p>{projectData.description}</p>
     </blockquote>
 
     <!-- Tech stack -->
-    <div class="flex flex-col md:flex-row md:items-center py-3 gap-4">
+    <div class="flex flex-col md:flex-row md:items-center pt-3 pb-4 gap-4">
       <h2 class="font-extrabold text-2xl">Tech-stack:</h2>
-      <ul class="flex gap-4">
+      <ul class="flex gap-3 overflow-auto justify-evenly">
         {
           projectData.tech_stack.map((item) => (
             <li>
-              <img
-                class="h-8 md:h-12 max-w-10 md:max-w-16"
-                src={`/tech/${technologies[item].logo}`}
-                alt={`${technologies[item].title} logo`}
-                title={technologies[item].title}
-              />
+              <div class="text-xs text-center flex flex-col items-center">
+                <img
+                  class="h-8 md:h-12 max-w-10 md:max-w-16"
+                  src={`/tech/${technologies[item].logo}`}
+                  alt={`${technologies[item].title} logo`}
+                />
+                <span>{technologies[item].title}</span>
+              </div>
             </li>
           ))
         }
       </ul>
     </div>
+    <br />
     <MarkdownContentLayout>
       <slot />
     </MarkdownContentLayout>

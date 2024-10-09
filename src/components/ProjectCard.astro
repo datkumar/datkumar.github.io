@@ -26,7 +26,6 @@ const { projectData } = Astro.props;
               class="h-5 max-w-6"
               src={`/tech/${technologies[item].logo}`}
               alt={`${technologies[item].title} logo`}
-              title={technologies[item].title}
             />
           </li>
         ))
@@ -34,9 +33,7 @@ const { projectData } = Astro.props;
     </ul>
   </div>
   <!-- Description -->
-  <div
-    class="pt-1 pb-2 font-thin text-slate-700 text-sm md:text-base leading-tight"
-  >
+  <div class="pt-1 pb-2 font-thin text-slate-700 text-sm leading-tight">
     {projectData.description}
   </div>
 </div>

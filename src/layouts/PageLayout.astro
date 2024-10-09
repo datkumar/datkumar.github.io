@@ -7,7 +7,12 @@ interface Props {
   pageTitle?: string;
 }
 
-const { pageTitle = "Kumar Deshmukh" } = Astro.props;
+const siteTitle = "Kumar Deshmukh";
+const siteDescription = "My portfolio website, made with Astro";
+const siteImageUrl = "/me.png";
+const siteUrl = "https://datkumar.github.io/";
+
+const { pageTitle = siteTitle } = Astro.props;
 ---
 
 <!doctype html>
@@ -16,19 +21,36 @@ const { pageTitle = "Kumar Deshmukh" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <!-- Page Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <!-- Page Description -->
-    <meta name="description" content="Astro description" />
-    <!-- Page Title -->
+
+    <!-- Primary Meta Tags -->
     <title>{pageTitle}</title>
+    <meta name="title" content={siteTitle} />
+    <meta name="description" content={siteDescription} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={siteDescription} />
+    <meta property="og:image" content={siteImageUrl} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={siteUrl} />
+    <meta property="twitter:title" content={siteImageUrl} />
+    <meta property="twitter:description" content={siteDescription} />
+    <meta property="twitter:image" content={siteImageUrl} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
     <!-- For smooth navigation animation -->
     <ViewTransitions />
   </head>
-  <body class="mx-auto max-w-5xl">
+  <body class="mx-auto max-w-4xl">
     <Header />
     <main>
-      <div class="container px-6 pt-2 pb-10">
+      <div class="container px-5 pt-2 pb-10 mx-auto">
         <slot />
       </div>
     </main>
