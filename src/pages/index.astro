@@ -40,7 +40,7 @@ import PageLayout from "../layouts/PageLayout.astro";
 
     <br />
     <!-- Skills -->
-    <h2 class="pt-2 font-mono font-bold text-2xl">SKILLS:</h2>
+    <h2 class="pt-2 font-mono font-bold text-xl md:text-2xl">SKILLS:</h2>
     <table class="font-mono my-3">
       <thead> </thead>
       <tbody>
@@ -72,15 +72,22 @@ import PageLayout from "../layouts/PageLayout.astro";
         </tr>
       </tbody>
     </table>
-    <br />
     <!-- Contact -->
-    <h2 class="pt-2 font-mono font-bold text-2xl">Let's connect:</h2>
-    <div class="flex items-center py-2 gap-4">
+    <h2 class="pt-5 pb-2 font-mono font-bold text-xl md:text-2xl">
+      Let's connect:
+    </h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
       <SocialsButton
-        title="LinkedIn"
-        logo="linkedin.svg"
-        colorClass="text-white bg-blue-500"
-        url="https://www.linkedin.com/in/kumardeshmukh/"
+        title="GitHub"
+        logo="github-mark-white.svg"
+        colorClass="bg-slate-700 text-white"
+        url="https://github.com/datkumar"
+      />
+      <SocialsButton
+        title="Email"
+        logo="gmail.svg"
+        colorClass="bg-white"
+        url="mailto:contact.kumar.deshmukh@gmail.com"
       />
       <SocialsButton
         title="Twitter"
@@ -89,10 +96,10 @@ import PageLayout from "../layouts/PageLayout.astro";
         url="https://x.com/kafkaesql"
       />
       <SocialsButton
-        title="GitHub"
-        logo="github.svg"
-        colorClass="bg-slate-100 text-black"
-        url="https://github.com/datkumar"
+        title="LinkedIn"
+        logo="linkedin.svg"
+        colorClass="text-white bg-blue-600"
+        url="https://www.linkedin.com/in/kumardeshmukh/"
       />
     </div>
   </div>

@@ -1,25 +1,36 @@
 ---
+import { getCollection } from "astro:content";
 import PageLayout from "../layouts/PageLayout.astro";
+import BlogCard from "../components/BlogCard.astro";
+
+const blogEntries = await getCollection("blogs");
 ---
 
 <style>
   a {
-    @apply font-mono font-semibold text-blue-700 hover:text-pink-600;
+    @apply font-mono font-semibold text-blue-700  hover:text-pink-600 hover:underline decoration-dotted;
   }
 </style>
 
 <PageLayout pageTitle="Blog">
-  <div
-    class="flex flex-col gap-3 h-[300px] items-center justify-center text-center text-xl"
-  >
-    <div>
-      <h1 class="font-bold text-2xl">Coming Soon!!</h1>
-    </div>
-    <div>
-      In the meantime, you can check out my <a
+  <div class="container flex flex-col gap-5">
+    {
+      blogEntries
+        .sort(
+          (a, b) =>
+            new Date(b.data.publishDate).getTime() -
+            new Date(a.data.publishDate).getTime()
+        )
+        .map((entry) => {
+          return <BlogCard blogData={entry.data} />;
+        })
+    }
+    <div class="text-lg text-center pt-3">
+      Also check out my <a
         target="_blank"
-        href="https://datkumar.github.io/code-journal/">Code-Journal</a
-      > or <a target="_blank" href="https://github.com/datkumar/Configs"
+        href="https://datkumar.github.io/code-journal/"
+        ><nobr>Code-Journal</nobr></a
+      > and <a target="_blank" href="https://datkumar.github.io/Configs/"
         >Configs</a
       >
     </div>

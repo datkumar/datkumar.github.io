@@ -1,0 +1,39 @@
+---
+import type { BlogData } from "../content/config";
+
+interface Props {
+  blogData: BlogData;
+}
+
+const { blogData } = Astro.props;
+---
+
+<a href={blogData.url} target="_blank">
+  <div
+    class="container bg-white rounded-xl shadow-md p-3 md:p-5 border-2 hover:border-teal-400"
+  >
+    <div class="flex justify-between center pb-2">
+      <span class="font-semibold md:text-lg">
+        {blogData.title}
+      </span>
+      <span class="font-mono text-sm md:text-base">
+        {
+          new Date(blogData.publishDate).toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "2-digit",
+          })
+        }
+      </span>
+    </div>
+    <ul class="flex list-none gap-2 text-xs">
+      {
+        blogData.tags.map((tag) => (
+          <li class="bg-slate-200 px-1.5 py-1 rounded-md font-mono text-cyan-900">
+            {tag}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</a>

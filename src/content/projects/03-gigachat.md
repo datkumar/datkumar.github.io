@@ -8,7 +8,7 @@ tech_stack: [js, nodejs, react, socketio]
 ## Overview
 
 - A real-time chat application that runs locally on your machine via an Express server and web-sockets
-- Multi-User accomodation with private rooms available
+- Multi-User accommodation with private rooms available
 - Enter the room number and join that private session. Each private chat session runs isolated from each other and the messages are hidden from each other
 - Chat history lives within the session as long as there is at least one person in there. If empty, the history gets cleared out
 

@@ -21,6 +21,21 @@ const projectsCollection = defineCollection({
   schema: projectsCollectionSchema,
 });
 
+const blogDataSchema = z.object({
+  title: z.string(),
+  url: z.string().url(),
+  publishDate: z.date(), // YYYY-MM-DD
+  tags: z.array(z.string()),
+});
+
+export type BlogData = z.infer<typeof blogDataSchema>;
+
+const blogsCollection = defineCollection({
+  type: "data",
+  schema: blogDataSchema,
+});
+
 export const collections = {
   projects: projectsCollection,
+  blogs: blogsCollection,
 };

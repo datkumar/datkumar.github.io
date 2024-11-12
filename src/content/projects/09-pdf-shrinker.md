@@ -8,7 +8,7 @@ tech_stack: [bash]
 ## Instructions:
 
 - It's is a bash script designed to work on **Linux-based** operating systems (Ubuntu, Fedora, Debian, PopOS etc)
-- Clone the repo. Place the `.sh` script file inside the folder containing all your PDF documents within it or any of it's subfolders
+- Clone the repo. Place the `.sh` script file inside the folder containing all your PDF documents within it or any of it's sub-folders
 - Run below commands to give permission and execute the script. The script takes a few minutes to finish so don't panic if it feels stuck
 
   ```bash
