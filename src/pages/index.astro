@@ -3,6 +3,69 @@ import SocialsButton from "../components/SocialsButton.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 ---
 
+<style>
+  #rotating-box {
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  /* Animation for border rotation */
+  @keyframes rotate {
+    100% {
+      transform: rotate(1turn);
+    }
+  }
+
+  /* Rotating border effect */
+  #rotating-box::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    /* left: -10px; */
+    /* top: -10px; */
+    width: calc(100% + 100px);
+    height: calc(100% + 100px);
+    background-color: #fc68c3;
+    background-repeat: no-repeat;
+    background-size: 50% 50%;
+    background-position:
+      0 0,
+      100% 0,
+      100% 100%,
+      0 100%;
+    background-image: linear-gradient(45deg, #fc68c3, #6056cf);
+    animation: rotate 4s linear infinite;
+    border-radius: 10px;
+  }
+
+  /* White inner box */
+  #rotating-box::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    /* left: 5px; */
+    /* top: 5px; */
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    background: white;
+    border-radius: 10px;
+  }
+
+  #rotate-box:hover {
+    transform: scale(1.5);
+  }
+</style>
+
 <PageLayout>
   <div class="mx-auto max-w-4xl">
     <!-- Profile Card -->
@@ -39,8 +102,26 @@ import PageLayout from "../layouts/PageLayout.astro";
     </div>
 
     <br />
-    <!-- Skills -->
-    <h2 class="pt-2 font-mono font-bold text-xl md:text-2xl">SKILLS:</h2>
+
+    <div class="flex justify-between items-center">
+      <!-- Skills -->
+      <div class="pt-2 font-mono font-bold text-xl">SKILLS:</div>
+
+      <!-- Resume link -->
+      <a href="/resume/Kumar_Deshmukh_resume.pdf" target="_blank">
+        <div
+          id="rotating-box"
+          class="hover:animate-bounce delay-200 duration-500"
+        >
+          <div
+            class="text-md md:text-lg text-slate-700 font-sans font-bold px-4 py-2"
+          >
+            Resume
+          </div>
+        </div>
+      </a>
+    </div>
+
     <table class="font-mono my-3">
       <thead> </thead>
       <tbody>
@@ -72,6 +153,7 @@ import PageLayout from "../layouts/PageLayout.astro";
         </tr>
       </tbody>
     </table>
+    <br />
     <!-- Contact -->
     <h2 class="pt-5 pb-2 font-mono font-bold text-xl md:text-2xl">
       Let's connect:
@@ -102,5 +184,7 @@ import PageLayout from "../layouts/PageLayout.astro";
         url="https://www.linkedin.com/in/kumardeshmukh/"
       />
     </div>
+
+    <br />
   </div>
 </PageLayout>

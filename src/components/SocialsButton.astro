@@ -8,7 +8,10 @@ interface Props {
 const { title, url, logo, colorClass } = Astro.props;
 ---
 
-<button class={"container px-4 py-3 rounded-lg shadow-md " + colorClass}>
+<button
+  class={"container hover:animate-bounce delay-200 duration-700 px-4 py-3 rounded-lg shadow-md " +
+    colorClass}
+>
   <a href={url} target="_blank">
     <span class="flex text-sm md:text-base justify-center gap-2 font-semibold">
       <img src={`/social/${logo}`} alt={title} class="h-5 w-5" />

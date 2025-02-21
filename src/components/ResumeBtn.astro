@@ -1,0 +1,91 @@
+<style>
+  /* Scoped styles using an ID */
+  #rotating-box {
+    position: relative;
+    z-index: 0;
+    /* width: 100%; */
+    /* max-width: 200px; */
+    /* height: 100px; */
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    font-weight: bold;
+  }
+
+  /* Animation for border rotation */
+  @keyframes rotate {
+    100% {
+      transform: rotate(1turn);
+    }
+  }
+
+  /* Rotating border effect */
+  #rotating-box::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    left: -50%;
+    top: -50%;
+    width: 200%;
+    height: 200%;
+    /* background-color: #399953; */
+    background-color: #ee4cc5;
+    background-repeat: no-repeat;
+    background-size: 50% 50%;
+    background-position:
+      0 0,
+      100% 0,
+      100% 100%,
+      0 100%;
+    /* background-image: linear-gradient(#399953, #399953),
+      linear-gradient(#fbb300, #fbb300), linear-gradient(#d53e33, #d53e33),
+      linear-gradient(#377af5, #377af5); */
+    background-image:
+      linear-gradient(#ee4cc5, #6c63e9), linear-gradient(#ee4cc5, #6c63e9);
+    /* linear-gradient(#ee4cc5, #ee4cc5), linear-gradient(#6c63e9, #6c63e9); */
+    animation: rotate 4s linear infinite;
+  }
+
+  /* White inner box */
+  #rotating-box::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 6px;
+    top: 6px;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+    background: white;
+    border-radius: 5px;
+  }
+</style>
+
+<!-- Scoped component that can be nested anywhere in Astro -->
+<div id="rotating-box">Resume</div>
+
+<!-- <br /> -->
+
+<!-- <div
+  class="duration-500 border-pink-600 border-2 bg-white hover:bg-pink-500 rounded-md py-1"
+>
+  <a
+    href="/resume/Kumar_Deshmukh_resume.pdf"
+    target="_blank"
+    class="text-lg text-slate-600 px-4 py-2 rounded-lg hover:bg-pink-500 hover:text-white"
+  >
+    Resume
+  </a>
+</div>
+
+<br /> -->
+
+<!-- <a href="/resume/Kumar_Deshmukh_resume.pdf" target="_blank">
+  <button class="flex animate-bounce">
+    <div>Resume</div>
+    <div>↓</div>
+  </button>
+</a> -->
