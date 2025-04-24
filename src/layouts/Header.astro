@@ -53,7 +53,7 @@ const navList = [
           title="Show Navigation Menu"
           id="ham-btn"
           role="dialog"
-          class="absolute top-5 right-5"
+          class="absolute z-50 top-5 right-5"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +70,7 @@ const navList = [
         <input type="checkbox" name="ham-toggle" id="ham-toggle" hidden />
         <ul
           id="nav-menu"
-          class="fixed top-15 right-0 translate-x-[100vw] pt-10 h-dvh w-dvw flex flex-col gap-4 items-center justify-start bg-indigo-600"
+          class="fixed top-16 z-[100] right-0 translate-x-[100vw] pt-10 h-dvh w-dvw flex flex-col gap-4 items-center justify-start bg-indigo-600"
         >
           {
             navList.map((item) => (
