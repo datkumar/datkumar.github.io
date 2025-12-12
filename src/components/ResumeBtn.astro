@@ -1,21 +1,28 @@
 ---
-
+const resumeLink =
+  "https://drive.google.com/file/d/1LPSL8czS8AbvHPzW_4LLPezwuH7A4cUP/view";
+// "https://drive.google.com/file/d/1LPSL8czS8AbvHPzW_4LLPezwuH7A4cUP/view?usp=drive_link";
 ---
 
 <style is:global>
   #rotating-box {
     position: relative;
     z-index: 1;
-    border-radius: 10px;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.2rem 0.5rem;
+    padding: 0.3rem 0.8rem;
     border-radius: 10px;
-    transition:
-      transform 0.2s ease,
-      box-shadow 0.2s ease;
+
+    /* Correctly defined transition for a smooth effect */
+    transition: transform 0.3s ease-in-out;
+  }
+
+  #rotating-box:hover {
+    /* Zoom in slightly on hover */
+    transform: scale(1.05);
+    transition-duration: 0.3s ease-in-out;
   }
 
   /* Animation for border rotation */
@@ -34,20 +41,20 @@
     /* top: -10px; */
     width: calc(100% + 100px);
     height: calc(100% + 100px);
-    background-color: #c3afe7;
+    background-color: #cbd7f1;
     background-repeat: no-repeat;
-    background-size: 50% 50%;
+    /* background-size: 50% 50%; */
     background-position:
       0 0,
       100% 0,
       100% 100%,
       0 100%;
     background-image: linear-gradient(
-      30deg,
-      #f8398fb0,
-      #1417cc,
-      #f8398fb0,
-      #1417cc
+      20deg,
+      #8cd7dcfa,
+      #102acff2,
+      #8cd7dcfa,
+      #102acff2
     );
     animation: rotate 4s linear infinite;
     border-radius: 10px;
@@ -62,17 +69,13 @@
     /* top: 5px; */
     width: calc(100% - 10px);
     height: calc(100% - 10px);
-    background: white;
+    background-color: white;
     border-radius: 10px;
-  }
-
-  #rotate-box:hover {
-    transform: scale(1.5);
   }
 </style>
 
-<a href="/resume/Kumar_Deshmukh_resume.pdf" target="_blank">
-  <div id="rotating-box" class="hover:animate-bounce delay-200 duration-500">
+<a href={resumeLink} target="_blank">
+  <div id="rotating-box">
     <button
       class="text-md md:text-lg text-slate-700 font-sans font-bold px-4 py-2"
     >

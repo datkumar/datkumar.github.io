@@ -6,12 +6,6 @@ import BlogCard from "../components/BlogCard.astro";
 const blogEntries = await getCollection("blogs");
 ---
 
-<style>
-  a {
-    @apply font-mono font-semibold text-blue-700  hover:text-pink-600 hover:underline decoration-dotted;
-  }
-</style>
-
 <PageLayout pageTitle="Blog">
   <div class="container flex flex-col gap-5">
     {
@@ -29,8 +23,12 @@ const blogEntries = await getCollection("blogs");
       Also check out my <a
         target="_blank"
         href="https://datkumar.github.io/code-journal/"
+        class="font-mono font-semibold text-blue-700 hover:text-pink-600 hover:underline decoration-dotted"
         ><nobr>Code-Journal</nobr></a
-      > and <a target="_blank" href="https://datkumar.github.io/Configs/"
+      > and <a
+        target="_blank"
+        href="https://datkumar.github.io/Configs/"
+        class="font-mono font-semibold text-blue-700 hover:text-pink-600 hover:underline decoration-dotted"
         >Configs</a
       >
     </div>

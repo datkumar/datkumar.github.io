@@ -1,11 +1,11 @@
 ---
 import ResumeBtn from "../components/ResumeBtn.astro";
-import SocialsButton from "../components/SocialsButton.astro";
+import SocialsBtn from "../components/SocialsBtn.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 ---
 
 <PageLayout>
-  <div class="mx-auto max-w-4xl">
+  <div class="px-2">
     <!-- Profile Card -->
     <div
       class="flex flex-col md:gap-3 md:flex-row items-center md:items-start pt-4 pb-6 px-6 bg-white shadow-lg rounded-lg"
@@ -85,26 +85,26 @@ import PageLayout from "../layouts/PageLayout.astro";
     <h2 class="pt-5 pb-2 font-mono font-bold text-xl md:text-2xl">
       Let's connect:
     </h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
-      <SocialsButton
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
+      <SocialsBtn
         title="GitHub"
         logo="github-mark-white.svg"
         colorClass="bg-slate-700 text-white"
         url="https://github.com/datkumar"
       />
-      <SocialsButton
+      <SocialsBtn
         title="Email"
         logo="gmail.svg"
         colorClass="bg-white"
         url="mailto:contact.kumar.deshmukh@gmail.com"
       />
-      <SocialsButton
+      <SocialsBtn
         title="Twitter"
         logo="twitter.svg"
         colorClass="text-white bg-black"
         url="https://x.com/kafkaesql"
       />
-      <SocialsButton
+      <SocialsBtn
         title="LinkedIn"
         logo="linkedin.svg"
         colorClass="text-white bg-blue-600"

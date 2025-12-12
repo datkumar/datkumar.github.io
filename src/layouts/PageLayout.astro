@@ -47,12 +47,10 @@ const { pageTitle = siteTitle } = Astro.props;
     <!-- For smooth navigation animation -->
     <ClientRouter />
   </head>
-  <body class="mx-auto max-w-4xl">
+  <body class="container max-w-6xl mx-auto">
     <Header />
     <main>
-      <div class="container px-5 pt-2 pb-10 mx-auto">
-        <slot />
-      </div>
+      <slot />
     </main>
   </body>
 </html>
