@@ -24,6 +24,7 @@ const projectsCollection = defineCollection({
 const blogDataSchema = z.object({
   title: z.string(),
   url: z.string().url(),
+  cover: z.string(),
   publishDate: z.date(), // YYYY-MM-DD
   tags: z.array(z.string()),
 });

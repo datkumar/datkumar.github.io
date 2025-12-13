@@ -6,6 +6,7 @@ import PageLayout from "../layouts/PageLayout.astro";
 
 <PageLayout pageTitle="About">
   <div>
+    <!-- EDUCATION -->
     <SectionTitle title="Education" />
     <SectionEntry
       headingLeft="Bachelor of Engineering, IT"
@@ -15,10 +16,18 @@ import PageLayout from "../layouts/PageLayout.astro";
       bulletPoints={["Relevant coursework: DSA, OOP, DBMS, OS"]}
     />
     <br />
+    <!-- WORK -->
     <SectionTitle title="Work Experience" />
     <SectionEntry
+      headingLeft="Mobile Team"
+      headingRight="Dec '25 - Present"
+      subheadingLeft="Griffyn Robotech"
+      subheadingRight="Pune"
+      bulletPoints={[]}
+    />
+    <SectionEntry
       headingLeft="Project Technical Personnel"
-      headingRight="Jan '25 - Present"
+      headingRight="Jan '25 - Jun '25"
       subheadingLeft="SCRC, IIIT Hyderabad"
       subheadingRight="Hyderabad"
       bulletPoints={[
@@ -26,7 +35,6 @@ import PageLayout from "../layouts/PageLayout.astro";
         "Developed waste management solutions including number plate detection for ensuring pickups and ML classification based waste segregation via camera feed. Configurable home-screen widgets for quick data reference",
       ]}
     />
-    <br />
     <SectionEntry
       headingLeft="Product Engineer"
       headingRight="Sept '23 - Jan '24"
@@ -37,7 +45,6 @@ import PageLayout from "../layouts/PageLayout.astro";
         "Developed a functional interactive prototype from scratch, complete with UI elements and intuitive user interactions, to demonstrate the potential of a new external app",
       ]}
     />
-    <br />
     <SectionEntry
       headingLeft="Product Engineer Intern"
       headingRight="Feb '23 - Aug '23"
@@ -48,7 +55,6 @@ import PageLayout from "../layouts/PageLayout.astro";
         'Developed features such as "Quick Actions" and "Import Contacts" that significantly <span class=\'font-semibold\'>reduced user clicks</span> and automated manual tasks, improving overall efficiency.',
       ]}
     />
-    <br />
     <SectionEntry
       headingLeft="Web Developer Intern"
       headingRight="Sept '22 - Feb '23"
@@ -61,6 +67,7 @@ import PageLayout from "../layouts/PageLayout.astro";
       ]}
     />
     <br />
+    <!-- VOLUNTEERING -->
     <SectionTitle title="Volunteering" />
     <SectionEntry
       headingLeft="Mentor"
@@ -71,7 +78,6 @@ import PageLayout from "../layouts/PageLayout.astro";
         "Guided high-school students in software development, introducing them to various aspects of the field and facilitating the creation of mini-projects.",
       ]}
     />
-    <br />
     <SectionEntry
       headingLeft="Problem Curator"
       headingRight="Nov '21 - Feb '22"

@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 import Header from "./Header.astro";
 
@@ -45,14 +45,12 @@ const { pageTitle = siteTitle } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- For smooth navigation animation -->
-    <ViewTransitions />
+    <ClientRouter />
   </head>
-  <body class="mx-auto max-w-4xl">
+  <body class="container max-w-6xl mx-auto px-3">
     <Header />
     <main>
-      <div class="container px-5 pt-2 pb-10 mx-auto">
-        <slot />
-      </div>
+      <slot />
     </main>
   </body>
 </html>
