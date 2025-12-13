@@ -2,90 +2,88 @@
 import ResumeBtn from "../components/ResumeBtn.astro";
 import SocialsBtn from "../components/SocialsBtn.astro";
 import PageLayout from "../layouts/PageLayout.astro";
+
+const skillsRowCls =
+  "grid grid-cols-[120px_1fr] items-center bg-stone-50 border-stone-200 border-1 rounded-xl my-2";
+
+const dtCls = "font-semibold text-center px-4 py-2";
+const ddCls = "py-2 px-4 text-sm md:text";
 ---
 
 <PageLayout>
   <div class="px-2">
     <!-- Profile Card -->
     <div
-      class="flex flex-col md:gap-3 md:flex-row items-center md:items-start pt-4 pb-6 px-6 bg-white shadow-lg rounded-lg"
+      class="flex flex-col md:gap-3 md:flex-row items-center md:items-start pt-4 pb-6 pl-6 pr-8 bg-white shadow-lg rounded-xl"
     >
       <!-- Profile pic -->
       <div
-        class="h-32 w-32 md:h-44 md:w-44 rounded-full bg-gradient-to-br from-indigo-600 to-pink-200 border-4 border-white overflow-hidden shrink-0 mb-4 md:mb-0"
+        class="h-32 w-32 md:h-44 md:w-44 rounded-full bg-linear-to-br from-indigo-600 to-pink-200 border-4 border-white overflow-hidden shrink-0 mb-4 md:mb-0"
       >
         <img src="/me.png" alt="My Photo" class="object-cover rounded-full" />
       </div>
 
-      <!-- Profile para -->
+      <!-- Intro para -->
       <div
-        class="flex flex-col gap-2 justify-center my-auto text-sm md:text-lg text-justify md:text-left"
+        class="flex flex-col text-slate-600 gap-2 justify-center my-auto text-sm md:text-lg text-justify md:text-left"
       >
         <p>
-          Hello I'm <strong class="px-0.5">Kumar Deshmukh,</strong> a web and mobile
-          developer from <a
+          Hello I'm <strong class="px-0.5 text-black font-serif font-bold"
+            >Kumar Deshmukh</strong
+          >, a <span class="font-serif font-semibold"
+            >web and mobile developer</span
+          > from
+          <a
             target="_blank"
             href="https://maps.app.goo.gl/3G6y87Ud6NqGNMrW7"
             class="underline decoration-dotted decoration-pink-600 hover:bg-pink-600 hover:text-white px-0.5"
-            >Pune, India</a
+            >Pune.</a
           >
-        </p>
-        <p class="font-light text-slate-600">
-          I enjoy exploring different technologies, working on interesting
-          projects, and building practical solutions. When I'm not coding,
-          you'll find me gaming or watching a cinematic film. Let's build
-          something awesome together!
+          <span>
+            I enjoy developing practical digital solutions, exploring emerging
+            technologies, and solving real-world problems through code. Beyond
+            work, I stay active by working out or unwinding with games and
+            cinema. Curious by nature, crafting thoughtful digital experiences.
+          </span>
         </p>
       </div>
     </div>
 
     <br />
 
-    <div class="flex relative z-10 mt-3 mb-1 justify-between items-center">
+    <div class="flex z-5 mt-3 mb-1 justify-between items-center">
       <!-- Skills -->
-      <div class="font-mono font-bold text-xl">SKILLS:</div>
+      <div class="font-mono font-bold text-3xl">SKILLS</div>
 
       <!-- Resume link button -->
       <ResumeBtn />
     </div>
 
-    <table class="font-mono my-3">
-      <thead> </thead>
-      <tbody>
-        <tr>
-          <td
-            class="border-r-2 border-b-2 border-indigo-500 text-right font-semibold px-3"
-            >Frontend
-          </td>
-          <td class="border-l-2 border-b-2 border-indigo-500 text-sm p-2"
-            >React, Next.js, Flutter, Tailwind, Astro, HTML, CSS</td
-          >
-        </tr>
-        <tr class="border-none">
-          <td
-            class="border-r-2 border-b-2 border-indigo-500 text-right font-semibold px-3"
-            >Backend</td
-          >
-          <td class="border-l-2 border-b-2 border-indigo-500 text-sm p-2"
-            >Node.js, Express, Prisma, MongoDB, PostgreSQL</td
-          >
-        </tr>
-        <tr class="border-none">
-          <td class="border-r-2 border-indigo-500 text-right font-semibold px-3"
-            >Misc.</td
-          >
-          <td class="border-l-2 border-indigo-500 text-sm p-2"
-            >TypeScript, JavaScript, C++, Java, Python, Bash, Git</td
-          >
-        </tr>
-      </tbody>
-    </table>
-    <br />
+    <dl class="font-mono my-3 overflow-hidden">
+      <div class={skillsRowCls}>
+        <dt class={dtCls}>Languages</dt>
+        <dd class={ddCls}>C++, JavaScript, TypeScript, Java, Python, Bash</dd>
+      </div>
+
+      <div class={skillsRowCls}>
+        <dt class={dtCls}>Frontend</dt>
+        <dd class={ddCls}>
+          React, React Native, Next.js, Flutter, Tailwind, Astro, HTML, CSS
+        </dd>
+      </div>
+
+      <div class={skillsRowCls}>
+        <dt class={dtCls}>Backend</dt>
+        <dd class={ddCls}>Node.js, Express, Prisma, MongoDB, PostgreSQL</dd>
+      </div>
+      <div class={skillsRowCls}>
+        <dt class={dtCls}>Tools</dt>
+        <dd class={ddCls}>VS Code, Android Studio, Git, Postman, Tmux</dd>
+      </div>
+    </dl>
+
     <!-- Contact -->
-    <h2 class="pt-5 pb-2 font-mono font-bold text-xl md:text-2xl">
-      Let's connect:
-    </h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
+    <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
       <SocialsBtn
         title="GitHub"
         logo="github-mark-white.svg"

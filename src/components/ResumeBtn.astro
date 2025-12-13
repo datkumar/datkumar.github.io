@@ -1,28 +1,31 @@
 ---
 const resumeLink =
   "https://drive.google.com/file/d/1LPSL8czS8AbvHPzW_4LLPezwuH7A4cUP/view";
-// "https://drive.google.com/file/d/1LPSL8czS8AbvHPzW_4LLPezwuH7A4cUP/view?usp=drive_link";
 ---
 
 <style is:global>
   #rotating-box {
+    --shiny-border-width: 10px;
+    --grad-color1: #4e38f6;
+    --grad-color2: #fdd5ff;
     position: relative;
-    z-index: 1;
+    /* isolation: isolate; Creates stacking context WITHOUT z-index */
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0.3rem 0.8rem;
-    border-radius: 10px;
-
+    border-radius: 15px;
     /* Correctly defined transition for a smooth effect */
     transition: transform 0.3s ease-in-out;
   }
 
   #rotating-box:hover {
-    /* Zoom in slightly on hover */
+    /* On hover, zoom-in slightly and thicker border */
+    --shiny-border-width: 12px;
     transform: scale(1.05);
     transition-duration: 0.3s ease-in-out;
+    font-weight: 500;
   }
 
   /* Animation for border rotation */
@@ -32,29 +35,28 @@ const resumeLink =
     }
   }
 
-  /* Rotating border effect */
+  /* Rotating border effect - BEHIND the button */
   #rotating-box::before {
     content: "";
     position: absolute;
-    z-index: -2;
-    /* left: -10px; */
-    /* top: -10px; */
+    inset: 0;
+    z-index: -1;
     width: calc(100% + 100px);
     height: calc(100% + 100px);
+    margin: -50px;
     background-color: #cbd7f1;
     background-repeat: no-repeat;
-    /* background-size: 50% 50%; */
     background-position:
       0 0,
       100% 0,
       100% 100%,
       0 100%;
+
     background-image: linear-gradient(
       20deg,
-      #8cd7dcfa,
-      #102acff2,
-      #8cd7dcfa,
-      #102acff2
+      var(--grad-color1),
+      var(--grad-color2),
+      var(--grad-color1)
     );
     animation: rotate 4s linear infinite;
     border-radius: 10px;
@@ -65,20 +67,20 @@ const resumeLink =
     content: "";
     position: absolute;
     z-index: -1;
-    /* left: 5px; */
-    /* top: 5px; */
-    width: calc(100% - 10px);
-    height: calc(100% - 10px);
+    margin: calc(var(--shiny-border-width) / 2);
+    height: calc(100% - var(--shiny-border-width));
+    width: calc(100% - var(--shiny-border-width));
+    /* width: calc(100% - 8px);
+    height: calc(100% - 8px); */
     background-color: white;
     border-radius: 10px;
   }
 </style>
 
 <a href={resumeLink} target="_blank">
+  <!-- Ensure the button is above all its sibling pseudo-elements: -->
   <div id="rotating-box">
-    <button
-      class="text-md md:text-lg text-slate-700 font-sans font-bold px-4 py-2"
-    >
+    <button class="text-lg md:text-xl text-indigo-600 font-serif px-4 py-2">
       Resume
     </button>
   </div>

@@ -1,4 +1,6 @@
 ---
+import MenuIcon from "../components/MenuIcon.astro";
+
 const navList = [
   { title: "About", href: "/about" },
   { title: "Projects", href: "/projects" },
@@ -7,18 +9,22 @@ const navList = [
 ---
 
 <style>
-  #ham-toggle:not(:checked) + #nav-menu {
+  /* Ensure the menu is initially translated off-screen */
+  #nav-menu {
     transform: translateX(100vw);
     transition: transform 0.3s ease-in-out;
   }
 
-  #ham-toggle:checked + #nav-menu {
+  /* When the checkbox is checked, slide the menu back into view */
+  #ham-toggle:checked ~ label[for="ham-toggle"] + #nav-menu,
+  #ham-toggle:checked ~ #nav-menu {
     transform: translateX(0);
-    transition: transform 0.3s ease-in-out;
   }
 
   .shine:hover {
-    text-shadow: 0 0 30px #7308ff9f;
+    text-shadow:
+      0 0 25px rgb(255, 240, 254),
+      0 0 5px rgb(251, 77, 187);
     -moz-transition: all 0.2s ease-in;
     -o-transition: all 0.2s ease-in;
     -webkit-transition: all 0.2s ease-in;
@@ -27,10 +33,12 @@ const navList = [
 </style>
 
 <header transition:persist transition:animate="none">
-  <div class="font-mono relative md:static md:flex md:justify-between md:py-3">
+  <div
+    class="font-mono relative md:static md:items-center md:flex md:justify-between md:py-2 px-3"
+  >
     <!-- Logo -->
     <h1
-      class="text-lg p-4 md:text-4xl font-mono font-bold text-indigo-700 shine"
+      class="pt-4 pb-6 text-3xl md:text-4xl font-title font-bold text-indigo-700 shine"
     >
       <a href="/">kumar~</a>
     </h1>
@@ -51,28 +59,20 @@ const navList = [
 
       <!-- Mobile: Hamburger Menu and NavLinks  -->
       <div class="md:hidden">
-        <button
-          title="Show Navigation Menu"
-          id="ham-btn"
-          role="dialog"
-          class="absolute z-50 top-5 right-5"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="40px"
-            width="40px"
-            viewBox="0 -960 960 960"
-            class="fill-pink-600"
-          >
-            <path
-              d="M160-240q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h640q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240H160Zm0-200q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h640q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H160Zm0-200q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h640q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H160Z"
-            ></path>
-          </svg>
-        </button>
         <input type="checkbox" name="ham-toggle" id="ham-toggle" hidden />
+        <label
+          for="ham-toggle"
+          title="Toggle Navigation Menu"
+          role="button"
+          aria-controls="nav-menu"
+          class="absolute z-50 top-5 right-5 cursor-pointer"
+        >
+          <MenuIcon class="fill-pink-600" />
+        </label>
+        <!-- Show Nav menu popup on top of everything else, so highest z-index -->
         <ul
           id="nav-menu"
-          class="fixed top-16 z-[100] right-0 translate-x-[100vw] pt-10 h-dvh w-dvw flex flex-col gap-4 items-center justify-start bg-indigo-600"
+          class="fixed top-16 z-9999 right-0 pt-10 h-dvh w-dvw flex flex-col gap-4 items-center justify-start bg-indigo-600"
         >
           {
             navList.map((item) => (
@@ -89,24 +89,20 @@ const navList = [
   </div>
 </header>
 
-<script>
-  const hamBtn = document.getElementById("ham-btn")! as HTMLInputElement;
-  const hamCheckbox = document.getElementById(
-    "ham-toggle"
-  )! as HTMLInputElement;
+<script is:inline>
+  // This JavaScript is only to close the menu when a link is clicked,
+  // the actual menu toggle is now handled by the <label> and CSS.
+  window.addEventListener("load", () => {
+    const hamCheckbox = document.getElementById("ham-toggle");
+    if (!hamCheckbox) return;
 
-  hamBtn.addEventListener("click", () => {
-    hamCheckbox.checked = !hamCheckbox.checked;
-    // Have to manually dispatch a new change event on checkbox for updating it
-    // hamCheckbox.dispatchEvent(new Event("change"));
+    document.querySelectorAll("#nav-menu a").forEach((link) =>
+      link.addEventListener("click", () => {
+        // Delay the closing slightly to allow Astro's transition to start
+        setTimeout(() => {
+          hamCheckbox.checked = false;
+        }, 100);
+      })
+    );
   });
-
-  // Whenever any navbar link is clicked, reset the checkbox to false
-  const allNavbarLinks = document.querySelectorAll("header a");
-  allNavbarLinks.forEach((link) =>
-    link.addEventListener("click", () => {
-      hamCheckbox.checked = false;
-      // hamCheckbox.dispatchEvent(new Event("change"));
-    })
-  );
 </script>
