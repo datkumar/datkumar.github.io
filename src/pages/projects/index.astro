@@ -12,7 +12,7 @@ const projectEntries = await getCollection("projects");
       projectEntries.map((entry) => {
         return (
           <li>
-            <a href={`/projects/${entry.slug}`}>
+            <a href={`/projects/${entry.id}`}>
               <ProjectCard projectData={entry.data} />
             </a>
           </li>
